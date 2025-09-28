@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         setUpThreads();
 
+        throw new RuntimeException("asd");
     }
 
     private static void setUpThreads() {
