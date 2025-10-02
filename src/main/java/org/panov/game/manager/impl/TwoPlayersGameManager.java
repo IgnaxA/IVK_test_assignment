@@ -43,6 +43,11 @@ public class TwoPlayersGameManager implements GameManager {
         this.secondPlayer.handleGameStartEvent();
     }
 
+    @Override
+    public void endGame() {
+
+    }
+
     private void unregisterFirstPlayer() {
         this.setFirstPlayer(null);
     }

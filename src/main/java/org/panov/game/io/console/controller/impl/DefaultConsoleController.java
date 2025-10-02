@@ -1,22 +1,48 @@
 package org.panov.game.io.console.controller.impl;
 
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.panov.game.io.console.command.Command;
+import org.panov.game.io.console.command.factory.CommandFactory;
 import org.panov.game.io.console.controller.ConsoleController;
+import org.panov.game.state.GlobalGameContext;
 
 import java.util.Scanner;
 
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class DefaultConsoleController implements ConsoleController {
+    private final CommandFactory commandFactory;
+
     private Scanner scanner;
 
     @Override
     public void startListening() {
-        this.scanner = new Scanner(System.in);
+        this.scanner = this.createScanner();
 
-        boolean stoppedListening = false;
+        GlobalGameContext gameContext = GlobalGameContext.getInstance();
 
-        while (!stoppedListening) {
-            this.scanner.nextLine();
+        while (gameContext.isGamesCanBeStarted()) {
+            try {
+                String input = this.scanner.nextLine();
+                this.processInput(input);
+            } catch (Throwable e) {
+                System.out.println(e.getMessage());
+            }
         }
+
+        this.scanner.close();
+    }
+
+    private void processInput(String input) {
+        String preparedInput = this.prepareInput(input);
+        Command command = this.commandFactory.createCommand(preparedInput);
+        command.execute();
+    }
+
+    private Scanner createScanner() {
+        return new Scanner(System.in);
+    }
+
+    private String prepareInput(String input) {
+        return input.trim();
     }
 }
