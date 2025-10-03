@@ -1,11 +1,13 @@
 package org.panov.game.io.console.command.mapper.impl;
 
+import lombok.NoArgsConstructor;
 import org.panov.game.io.console.command.Command;
 import org.panov.game.io.console.command.mapper.BaseCommandMapper;
 import org.panov.game.io.console.command.support.impl.ExitCommand;
 
 import java.util.List;
 
+@NoArgsConstructor
 public class ExitCommandMapper extends BaseCommandMapper {
     private static final int ARGUMENTS_NUMBER = 0;
 

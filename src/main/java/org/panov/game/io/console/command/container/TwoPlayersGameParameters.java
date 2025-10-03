@@ -1,27 +1,23 @@
 package org.panov.game.io.console.command.container;
 
 import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
 
 @NoArgsConstructor
-@Accessors(chain = true)
-public class TwoPlayersGameParameters extends GameParameters {
-    PlayerParameters firstPlayer;
-    PlayerParameters secondPlayer;
+public class TwoPlayersGameParameters extends GameParameters<TwoPlayersGameParameters> {
+    private PlayerParameters firstPlayer;
+    private PlayerParameters secondPlayer;
 
-    public void setFirstPlayer(PlayerParameters firstPlayer) {
-        if (this.firstPlayer != null) {
-            this.players.remove(firstPlayer);
-        }
+    public TwoPlayersGameParameters setFirstPlayer(PlayerParameters firstPlayer) {
+        this.handleNewPlayer(this.firstPlayer, firstPlayer);
         this.firstPlayer = firstPlayer;
-        this.players.add(firstPlayer);
+
+        return this;
     }
 
-    public void setSecondPlayer(PlayerParameters secondPlayer) {
-        if (this.secondPlayer != null) {
-            this.players.remove(secondPlayer);
-        }
-        this.firstPlayer = secondPlayer;
-        this.players.add(secondPlayer);
+    public TwoPlayersGameParameters setSecondPlayer(PlayerParameters secondPlayer) {
+        this.handleNewPlayer(this.secondPlayer, secondPlayer);
+        this.secondPlayer = secondPlayer;
+
+        return this;
     }
 }

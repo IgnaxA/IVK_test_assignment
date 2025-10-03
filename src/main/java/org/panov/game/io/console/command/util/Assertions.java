@@ -10,4 +10,10 @@ public class Assertions {
             throw new WrongArgumentsNumberException(expectedArgumentsNumber, arguments.size());
         }
     }
+
+    public static void assertPlayerParametersNumber(String[] parameters, int expectedPlayerParametersNumber) {
+        if (parameters.length != expectedPlayerParametersNumber) {
+
+        }
+    }
 }

@@ -3,7 +3,6 @@ package org.panov.game.io.console.command.factory.impl;
 import org.panov.game.io.console.command.Command;
 import org.panov.game.io.console.command.factory.CommandFactory;
 import org.panov.game.io.console.command.mapper.CommandMapper;
-import org.panov.game.io.console.command.util.SplitUtils;
 
 import javax.annotation.PreDestroy;
 import java.util.List;
@@ -11,6 +10,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ConsoleCommandFactory implements CommandFactory {
+    private static final String COMMAND_SEPARATOR_BETWEEN_NAME_AND_ARGUMENTS = " ";
+
     private final Map<String, CommandMapper> commandsMappers = new ConcurrentHashMap<>();
 
     public ConsoleCommandFactory(List<CommandMapper> commandsMappers) {
@@ -34,10 +35,10 @@ public class ConsoleCommandFactory implements CommandFactory {
     }
 
     private String getArguments(String input, String commandName) {
-        String commandNameWithSpace = commandName + SplitUtils.SPACE;
+        String commandNameWithSeparator = commandName + COMMAND_SEPARATOR_BETWEEN_NAME_AND_ARGUMENTS;
 
-        if (input.startsWith(commandNameWithSpace)) {
-            return input.substring(commandNameWithSpace.length());
+        if (input.startsWith(commandNameWithSeparator)) {
+            return input.substring(commandNameWithSeparator.length());
         }
 
         return input.substring(commandName.length());
@@ -46,7 +47,7 @@ public class ConsoleCommandFactory implements CommandFactory {
     private String getCommandName(String input) {
         final int zeroIndex = 0;
 
-        int index = input.indexOf(SplitUtils.SPACE);
+        int index = input.indexOf(COMMAND_SEPARATOR_BETWEEN_NAME_AND_ARGUMENTS);
 
         return index != -1
                 ? input.substring(zeroIndex, index)

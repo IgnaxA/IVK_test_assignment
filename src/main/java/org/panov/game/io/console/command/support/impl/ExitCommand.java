@@ -8,7 +8,7 @@ import org.panov.game.state.GlobalGameContext;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class ExitCommand implements SupportiveCommand {
-    public static final String NAME = "EXIT";
+    public static final String NAME = "exit";
 
     @Override
     public void execute() {
@@ -20,10 +20,5 @@ public class ExitCommand implements SupportiveCommand {
     @Override
     public String getName() {
         return NAME;
-    }
-
-    @Override
-    public String getAnnotation() {
-        return "";
     }
 }

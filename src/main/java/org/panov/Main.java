@@ -65,7 +65,7 @@ public class Main {
         CommandMapper moveCommandMapper = new MoveCommandMapper();
 
         List<CommandMapper> commandMappers =
-                Arrays.asList(exitCommandMapper, helpCommandMapper, gameCommandMapper, moveCommandMapper);
+            Arrays.asList(exitCommandMapper, helpCommandMapper, gameCommandMapper, moveCommandMapper);
 
         return commandMappers;
     }
@@ -78,13 +78,13 @@ public class Main {
     }
 
     private static List<CommandAnnotation> createCommandAnnotations() {
-        CommandAnnotation exitCommandAnnotation = new ExitCommandAnnotation();
-        CommandAnnotation helpCommandAnnotation = new HelpCommandAnnotation();
         CommandAnnotation gameCommandAnnotation = new GameCommandAnnotation();
         CommandAnnotation moveCommandAnnotation = new MoveCommandAnnotation();
+        CommandAnnotation exitCommandAnnotation = new ExitCommandAnnotation();
+        CommandAnnotation helpCommandAnnotation = new HelpCommandAnnotation();
 
         List<CommandAnnotation> commandsAnnotations =
-                Arrays.asList(exitCommandAnnotation, helpCommandAnnotation, gameCommandAnnotation, moveCommandAnnotation);
+            Arrays.asList(gameCommandAnnotation, moveCommandAnnotation, exitCommandAnnotation, helpCommandAnnotation);
 
         return commandsAnnotations;
     }
@@ -96,7 +96,7 @@ public class Main {
         }
 
         IOController ioController = ioControllerDispatcher.findIOController(controllerType)
-                .orElseThrow(() -> new RuntimeException("Unable to find controller with type: " + controllerType));
+            .orElseThrow(() -> new RuntimeException("Unable to find controller with type: " + controllerType));
 
         ioController.startListening();
     }

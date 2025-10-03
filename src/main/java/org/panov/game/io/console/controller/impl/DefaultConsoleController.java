@@ -43,6 +43,6 @@ public class DefaultConsoleController implements ConsoleController {
     }
 
     private String prepareInput(String input) {
-        return input.trim();
+        return input.trim().toLowerCase();
     }
 }

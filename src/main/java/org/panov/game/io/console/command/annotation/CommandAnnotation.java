@@ -1,5 +1,7 @@
 package org.panov.game.io.console.command.annotation;
 
 public interface CommandAnnotation {
-    String getAnnotation();
+    String buildAnnotation();
+
+    int getAnnotationPriority();
 }

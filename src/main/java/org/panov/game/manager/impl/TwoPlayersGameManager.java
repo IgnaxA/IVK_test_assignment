@@ -1,6 +1,7 @@
 package org.panov.game.manager.impl;
 
 import org.panov.game.event.observer.PlayerObserver;
+import org.panov.game.io.console.command.container.TwoPlayersGameParameters;
 import org.panov.game.manager.GameManager;
 
 public class TwoPlayersGameManager implements GameManager {

@@ -10,4 +10,14 @@ public enum PlayerType {
     COMPUTER("comp");
 
     private final String name;
+
+    public static PlayerType getPlayerType(String playerType) {
+        for (PlayerType type : PlayerType.values()) {
+            if (type.getName().equalsIgnoreCase(playerType)) {
+                return type;
+            }
+        }
+
+        throw new RuntimeException("Unknown player type: " + playerType);
+    }
 }
