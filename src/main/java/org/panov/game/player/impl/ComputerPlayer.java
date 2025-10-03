@@ -2,10 +2,10 @@ package org.panov.game.player.impl;
 
 import org.panov.game.board.GameBoard;
 import org.panov.game.player.Player;
-import org.panov.game.player.move.impl.BotMoveController;
+import org.panov.game.player.move.impl.ComputerMoveController;
 
-public class BotPlayer extends Player {
-    public BotPlayer(BotMoveController moveController) {
+public class ComputerPlayer extends Player {
+    public ComputerPlayer(ComputerMoveController moveController) {
         super(moveController);
     }
 

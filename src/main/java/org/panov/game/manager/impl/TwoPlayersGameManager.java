@@ -1,6 +1,7 @@
 package org.panov.game.manager.impl;
 
 import org.panov.game.event.observer.PlayerObserver;
+import org.panov.game.io.console.command.container.TwoPlayersGameParameters;
 import org.panov.game.manager.GameManager;
 
 public class TwoPlayersGameManager implements GameManager {
@@ -41,6 +42,11 @@ public class TwoPlayersGameManager implements GameManager {
 
         this.firstPlayer.handleGameStartEvent();
         this.secondPlayer.handleGameStartEvent();
+    }
+
+    @Override
+    public void endGame() {
+
     }
 
     private void unregisterFirstPlayer() {
